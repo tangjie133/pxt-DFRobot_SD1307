@@ -10,7 +10,8 @@
         "main.blocks",
         "main.ts",
         "README.md",
-        "sd1307.ts"
+        "sd1307.ts",
+        "_locales/zh-cn/SD1307-strings.json",
     ],
     "testFiles": [
         "test.ts"
