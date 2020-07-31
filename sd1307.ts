@@ -2,7 +2,7 @@
 /**
  * DS1307 block
  */
-//% weight=10 color=#e7660b icon="\uf252" block="DS1307"
+//% weight=10 color=#e7660b icon="\uf252" block="SD1307"
 namespace DFRobot_DS1307 {
     let DS1307_I2C_ADDR = 104;
     
@@ -26,10 +26,10 @@ namespace DFRobot_DS1307 {
     /**
      * set ds1307's reg
      */
-    function setReg(reg: number, dat: number): void {
+    function setReg(reg: number, data: number): void {
         let buf = pins.createBuffer(2);
         buf[0] = reg;
-        buf[1] = dat;
+        buf[1] = data;
         pins.i2cWriteBuffer(DS1307_I2C_ADDR, buf);
     }
 
@@ -44,15 +44,15 @@ namespace DFRobot_DS1307 {
     /**
      * convert a Hex data to Dec
      */
-    function HexToDec(dat: number): number {
-        return (dat >> 4) * 10 + (dat % 16);
+    function HexToDec(data: number): number {
+        return (data >> 4) * 10 + (data % 16);
     }
 
     /**
      * convert a Dec data to Hex
      */
-    function DecToHex(dat: number): number {
-        return Math.idiv(dat, 10) * 16 + (dat % 10)
+    function DecToHex(data: number): number {
+        return Math.idiv(data, 10) * 16 + (data % 10)
     }
 
     /**
@@ -81,23 +81,23 @@ namespace DFRobot_DS1307 {
      * set year
      * @param dat is the Year will be set, eg: 2018
      */
-    //% blockId="DS1307_SET_YEAR" block="set year %dat"
+    //% blockId="DS1307_SET_YEAR" block="set year %data"
     //% weight=69 
     //% parts=DS1307 trackArgs=0
-    export function setYear(dat: number): void {
-        setReg(DFRobot_DS1307.TIME.DS1307_REG_YEAR, DecToHex(dat % 100))
+    export function setYear(data: number): void {
+        setReg(DFRobot_DS1307.TIME.DS1307_REG_YEAR, DecToHex(data % 100))
     }
 
     /**
      * set month
      * @param dat is Month will be set.  eg: 2
      */
-    //% blockId="DS1307_SET_MONTH" block="set month %dat"
+    //% blockId="DS1307_SET_MONTH" block="set month %data"
     //% weight=68 
     //% dat.min=1 dat.max=12
     //% parts=DS1307 trackArgs=0
-    export function setMonth(dat: number): void {
-        setReg(DFRobot_DS1307.TIME.DS1307_REG_MONTH, DecToHex(dat % 13))
+    export function setMonth(data: number): void {
+        setReg(DFRobot_DS1307.TIME.DS1307_REG_MONTH, DecToHex(data % 13))
     }
 
     /**
@@ -108,56 +108,56 @@ namespace DFRobot_DS1307 {
     //% weight=67 
     //% dat.min=1 dat.max=31
     //% parts=DS1307 trackArgs=0
-    export function setDay(dat: number): void {
-        setReg(DFRobot_DS1307.TIME.DS1307_REG_DAY, DecToHex(dat % 32))
+    export function setDay(data: number): void {
+        setReg(DFRobot_DS1307.TIME.DS1307_REG_DAY, DecToHex(data % 32))
     }
 
     /**
      * set weekday
      * @param dat is the Week Day will be set, eg: 4
      */
-    //% blockId="DS1307_SET_WEEKDAY" block="set weekday %dat"
+    //% blockId="DS1307_SET_WEEKDAY" block="set weekday %data"
     //% weight=66
     //% dat.min=1 dat.max=7
     //% parts=DS1307 trackArgs=0
-    export function setWeekday(dat: number): void {
-        setReg(DFRobot_DS1307.TIME.DS1307_REG_WEEKDAY, DecToHex(dat % 8))
+    export function setWeekday(data: number): void {
+        setReg(DFRobot_DS1307.TIME.DS1307_REG_WEEKDAY, DecToHex(data % 8))
     }
 
     /**
      * set hour
      * @param dat is the Hour will be set, eg: 0
      */
-    //% blockId="DS1307_SET_HOUR" block="set hour %dat"
+    //% blockId="DS1307_SET_HOUR" block="set hour %data"
     //% weight=65 
     //% dat.min=0 dat.max=23
     //% parts=DS1307 trackArgs=0
-    export function setHour(dat: number): void {
-        setReg(DFRobot_DS1307.TIME.DS1307_REG_HOUR, DecToHex(dat % 24))
+    export function setHour(data: number): void {
+        setReg(DFRobot_DS1307.TIME.DS1307_REG_HOUR, DecToHex(data % 24))
     }
 
     /**
      * set minute
      * @param dat is the Minute will be set, eg: 0
      */
-    //% blockId="DS1307_SET_MINUTE" block="set minute %dat"
+    //% blockId="DS1307_SET_MINUTE" block="set minute %data"
     //% weight=64 
     //% dat.min=0 dat.max=59
     //% parts=DS1307 trackArgs=0
-    export function setMinute(dat: number): void {
-        setReg(DFRobot_DS1307.TIME.DS1307_REG_MINUTE, DecToHex(dat % 60))
+    export function setMinute(data: number): void {
+        setReg(DFRobot_DS1307.TIME.DS1307_REG_MINUTE, DecToHex(data % 60))
     }
 
     /**
      * set second
      * @param dat is the Second will be set, eg: 0
      */
-    //% blockId="DS1307_SET_SECOND" block="set second %dat"
+    //% blockId="DS1307_SET_SECOND" block="set second %data"
     //% weight=63 
     //% dat.min=0 dat.max=59
     //% parts=DS1307 trackArgs=0
-    export function setSecond(dat: number): void {
-        setReg(DFRobot_DS1307.TIME.DS1307_REG_SECOND, DecToHex(dat % 60))
+    export function setSecond(data: number): void {
+        setReg(DFRobot_DS1307.TIME.DS1307_REG_SECOND, DecToHex(data % 60))
     }
 
     /**
@@ -170,7 +170,7 @@ namespace DFRobot_DS1307 {
      * @param minute is the Minute will be set, eg: 0
      * @param second is the Second will be set, eg: 0
      */
-    //% blockId="DS1307_SET_DATETIME" block="set year %year||month %month|day %day|weekday %weekday|hour %hour|minute %minute|second %second"
+    //% blockId="DS1307_SET_DATETIME" block="set %year year||%month month |%day day |%weekday weekday |%hour hour |%minute minute |%second second "
     //% weight=60 
     //% inlineInputMode=inline
     //% parts=DS1307 trackArgs=0
