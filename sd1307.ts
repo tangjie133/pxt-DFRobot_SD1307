@@ -227,7 +227,7 @@ namespace DFRobot_DS1307 {
   //% weight=50 
   export function dataJudgemt(time:TIME, data:number): boolean {
     let _number
-    switch(data){
+    switch(time){
     case DFRobot_DS1307.TIME.DS1307_REG_SECOND:
         _number = Math.min(HexToDec(getReg(DFRobot_DS1307.TIME.DS1307_REG_SECOND)), 59)
         break;
@@ -249,7 +249,7 @@ namespace DFRobot_DS1307 {
     default:
         _number = Math.min(HexToDec(getReg(DFRobot_DS1307.TIME.DS1307_REG_YEAR)), 99) + 2000
     }
-    if(_number==data){
+    if(_number == data){
         return true;
     }else{
        return false;
