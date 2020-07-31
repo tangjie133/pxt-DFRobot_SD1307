@@ -1,5 +1,6 @@
 {
     "name": "SD1307",
+    "version": "0.1.0",
     "dependencies": {
         "core": "*"
     },
