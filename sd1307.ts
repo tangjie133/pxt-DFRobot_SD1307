@@ -58,7 +58,7 @@ namespace DFRobot_DS1307 {
     /**
      * start ds1307 (go on)
      */
-    //% blockId="DS1307_START" block="start"
+    //% blockId="DS1307_START" block="clock begins"
     //% weight=80
     //% parts=DS1307 trackArgs=0
     export function start() {
@@ -69,7 +69,7 @@ namespace DFRobot_DS1307 {
     /**
      * stop ds1307 (pause)
      */
-    //% blockId="DS1307_STOP" block="pause"
+    //% blockId="DS1307_STOP" block=" clock pause"
     //% weight=70 
     //% parts=DS1307 trackArgs=0
     export function stop() {
